@@ -1,0 +1,9 @@
+{
+  "name": "kayip-bul",
+  "version": "0.1.0",
+  "private": true,
+  "description": "KAYIP BUL - kayıp ve bulunan eşya ilan platformu",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

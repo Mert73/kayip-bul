@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0f766e">
+<title>KAYIP BUL — Kayıp ve Bulunan Eşyalar</title>
+<style>
+:root{--ink:#152a35;--muted:#637681;--brand:#087f75;--brand2:#0fae9e;--bg:#f3f7f8;--line:#e0e9eb;--card:#fff;--danger:#b42318}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}button,input,select,textarea{font:inherit}button{cursor:pointer}
+header{background:linear-gradient(125deg,#0b514f,#0f9488);color:#fff;padding:18px max(18px,calc((100% - 1120px)/2));}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:12px}.logo{width:44px;height:44px;border-radius:14px;background:#ffffff1f;display:grid;place-items:center;font-size:25px}.brand h1{font-size:21px;margin:0;letter-spacing:.5px}.brand p{margin:2px 0 0;color:#d0f5f0;font-size:12px}.pill{border:1px solid #ffffff66;border-radius:99px;padding:8px 12px;font-size:12px}
+main{max-width:1120px;margin:auto;padding:24px 18px 50px}.hero{display:grid;grid-template-columns:1.3fr .7fr;gap:18px;align-items:stretch}.hero-copy{background:#e1f5f1;border:1px solid #c7e9e4;border-radius:24px;padding:28px}.eyebrow{color:var(--brand);font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase}.hero h2{font-size:clamp(27px,4vw,42px);line-height:1.1;margin:10px 0}.hero p{color:#45636a;line-height:1.55;margin:0 0 20px}.hero-actions{display:flex;gap:10px;flex-wrap:wrap}.btn{border:0;border-radius:12px;padding:12px 16px;font-weight:750}.primary{background:var(--brand);color:white}.secondary{background:white;color:var(--brand);border:1px solid #b8ddd7}.hero-side{background:#123b43;color:#fff;border-radius:24px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;min-height:210px}.hero-side .big{font-size:40px}.hero-side p{color:#c8e5e5;line-height:1.5}.statrow{display:flex;gap:20px;color:#d7f3ef;font-size:13px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:30px 0 14px}.section-head h3{margin:0;font-size:21px}.section-head p{margin:4px 0 0;color:var(--muted);font-size:13px}.filters{display:grid;grid-template-columns:1.5fr 1fr 1fr auto;gap:10px;background:#fff;padding:12px;border:1px solid var(--line);border-radius:16px}.field{width:100%;border:1px solid #d8e3e5;background:#fff;border-radius:10px;padding:11px 12px;color:var(--ink);outline-color:#51b8ac}.tabs{display:flex;gap:8px;margin:16px 0}.tab{background:#fff;border:1px solid var(--line);border-radius:99px;padding:9px 14px;color:#536973;font-weight:700}.tab.active{background:#d8f4ef;border-color:#8fd5ca;color:#086e65}.listings{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.listing{background:#fff;border:1px solid var(--line);border-radius:17px;padding:17px;min-width:0;box-shadow:0 3px 12px #163b4308}.listing-top{display:flex;align-items:center;justify-content:space-between;gap:8px}.typebadge{font-size:11px;font-weight:800;padding:6px 9px;border-radius:99px}.lost{background:#fff0e4;color:#a44d12}.found{background:#ddf8ec;color:#08764e}.category-icon{width:42px;height:42px;border-radius:13px;background:#edf7f6;display:grid;place-items:center;font-size:23px;margin:14px 0 10px}.listing-photo{width:100%;max-height:220px;object-fit:cover;border-radius:12px;margin:12px 0 10px;background:#edf4f4}.listing h4{font-size:17px;margin:0 0 7px;overflow-wrap:anywhere}.desc{color:#5b7079;font-size:13px;line-height:1.5;min-height:39px;overflow-wrap:anywhere}.meta{display:flex;gap:7px;flex-wrap:wrap;color:#607680;font-size:12px;margin:12px 0}.listing-foot{border-top:1px solid #edf1f2;padding-top:11px;display:flex;justify-content:space-between;align-items:center;color:#788991;font-size:11px}.report{background:none;border:0;color:#8b5a54;font-size:11px;padding:4px}.empty{grid-column:1/-1;text-align:center;padding:36px 20px;background:white;border:1px dashed #cad9dc;border-radius:16px;color:var(--muted)}.accountbar{max-width:1120px;margin:14px auto 0;padding:0 18px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.accountbar .account-actions{display:flex;gap:8px;flex-wrap:wrap}.smallbtn{border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 12px;color:var(--brand);font-weight:750}.accountstatus{font-size:13px;color:var(--muted)}.notice{background:#fff8e7;border:1px solid #f3dfaa;border-radius:13px;padding:13px 15px;color:#765820;font-size:12px;line-height:1.5;margin-top:22px}.modal-backdrop{position:fixed;inset:0;background:#0b242bb8;display:none;align-items:center;justify-content:center;padding:18px;z-index:10}.modal-backdrop.show{display:flex}.modal{background:#fff;border-radius:20px;width:min(600px,100%);max-height:92vh;overflow:auto;padding:22px}.modal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}.modal-head h3{margin:0;font-size:21px}.close{border:0;background:#eef3f4;border-radius:9px;width:36px;height:36px;font-size:21px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.formrow{display:flex;flex-direction:column;gap:6px}.formrow.full{grid-column:1/-1}.formrow label{font-size:12px;font-weight:800;color:#425963}.formrow textarea{min-height:100px;resize:vertical}.help{font-size:11px;color:var(--muted);line-height:1.45}.form-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:16px}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#123b43;color:white;padding:12px 16px;border-radius:12px;box-shadow:0 8px 30px #0002;display:none;max-width:90vw;z-index:20}.toast.show{display:block}footer{text-align:center;color:#7b8c93;font-size:12px;padding:20px}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.hero-side{min-height:150px}.filters{grid-template-columns:1fr 1fr}.filters .search{grid-column:1/-1}.listings{grid-template-columns:1fr 1fr}.section-head{align-items:start;flex-direction:column}}
+@media(max-width:480px){.listings{grid-template-columns:1fr}.formgrid{grid-template-columns:1fr}.formrow.full{grid-column:auto}.pill{display:none}.hero-copy{padding:22px}.hero h2{font-size:31px}}
+</style>
+</head>
+<body>
+<header><div class="top"><div class="brand"><div class="logo">⌕</div><div><h1>KAYIP BUL</h1><p>Türkiye'nin kayıp ve bulunan eşya panosu</p></div></div><div class="pill">🇹🇷 Türkiye genelinde</div></div></header>
+<div class="accountbar"><div class="accountstatus" id="accountStatus">İlan vermek için ücretsiz hesap oluştur.</div><div class="account-actions"><button class="smallbtn" id="accountBtn">Giriş / Kayıt</button><button class="smallbtn" id="myListingsBtn">İlanlarım</button><button class="smallbtn" id="messagesBtn">Gelen kutusu</button><button class="smallbtn" id="matchesBtn">🔎 Eşleşmeler</button><button class="smallbtn" id="adminBtn">Yönetici</button><button class="smallbtn" id="logoutBtn" style="display:none">Çıkış</button></div></div>
+<main>
+  <section class="hero">
+    <div class="hero-copy"><div class="eyebrow">Birlikte bulalım</div><h2>Kaybolan eşyan,<br>bir gün bulunabilir.</h2><p>Kayıp veya bulunan eşya ilanlarını şehir ve kategoriye göre ara. Bir ilan oluştur, doğru kişiye ulaşma ihtimalini artır.</p><div class="hero-actions"><button class="btn primary" id="openLost">＋ Eşya kaybettim</button><button class="btn secondary" id="openFound">✓ Eşya buldum</button></div></div>
+    <div class="hero-side"><div><div class="big">📍</div><h3>81 il, tek platform</h3><p>Şehir ve ilçe bilgisiyle ilanları bul. Kişisel bilgilerini ilan açıklamasına yazma.</p></div><div class="statrow"><span>🧭 Şehir bazlı arama</span><span>🛡️ Güvenlik odaklı</span></div></div>
+  </section>
+  <div class="section-head"><div><h3>İlan panosu</h3><p>Kayıp ve bulunan eşyaları keşfet</p></div><button class="btn primary" id="openAny">＋ İlan oluştur</button></div>
+  <section class="filters">
+    <input class="field search" id="query" placeholder="Örn. siyah cüzdan, anahtar..." aria-label="İlanlarda ara">
+    <select class="field" id="city"><option value="">Tüm şehirler</option></select>
+    <select class="field" id="category"><option value="">Tüm kategoriler</option><option>Telefon</option><option>Cüzdan / Kartlık</option><option>Anahtar</option><option>Çanta</option><option>Evcil hayvan</option><option>Takı</option><option>Belge</option><option>Giyim</option><option>Diğer</option></select>
+    <button class="btn secondary" id="clearFilters">Temizle</button>
+  </section>
+  <div class="tabs"><button class="tab active" data-type="">Tümü</button><button class="tab" data-type="lost">Kayıp</button><button class="tab" data-type="found">Bulunan</button></div>
+  <section class="listings" id="listings"><div class="empty">İlanlar yükleniyor…</div></section>
+  <div class="notice"><strong>Güvenli kullanım:</strong> Kimlik numarası, kart numarası, ev adresi veya doğrulama kodu paylaşma. Değerli eşyaların tesliminde güvenli ve halka açık bir yer seç. Bu ilk sürümde ilanlar sunucudaki JSON dosyasına kaydedilir; hesap doğrulama ve özel mesajlaşma henüz bulunmaz.</div>
+</main>
+<footer>KAYIP BUL · İlk prototip v0.1 · Gerçek ilan eklemeden önce bilgileri dikkatle kontrol et.</footer>
+
+<div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal"><div class="modal-head"><h3 id="modalTitle">Yeni ilan oluştur</h3><button class="close" id="closeModal" aria-label="Kapat">×</button></div>
+    <form id="listingForm"><div class="formgrid">
+      <div class="formrow"><label for="type">İlan türü</label><select class="field" id="type" required><option value="lost">Eşya kaybettim</option><option value="found">Eşya buldum</option></select></div>
+      <div class="formrow"><label for="cat">Kategori</label><select class="field" id="cat" required><option>Telefon</option><option>Cüzdan / Kartlık</option><option>Anahtar</option><option>Çanta</option><option>Evcil hayvan</option><option>Takı</option><option>Belge</option><option>Giyim</option><option>Diğer</option></select></div>
+      <div class="formrow full"><label for="title">İlan başlığı</label><input class="field" id="title" required minlength="4" maxlength="80" placeholder="Örn. Siyah anahtarlık bulundu"></div>
+      <div class="formrow"><label for="formCity">Şehir</label><select class="field" id="formCity" required></select></div>
+      <div class="formrow"><label for="district">İlçe (isteğe bağlı)</label><input class="field" id="district" maxlength="60" placeholder="Örn. Çankaya"></div>
+      <div class="formrow full"><label for="photo">Eşyanın fotoğrafı (isteğe bağlı)</label><input class="field" id="photo" type="file" accept="image/jpeg,image/png,image/webp"><div class="help">JPG, PNG veya WebP seç. Fotoğraf cihazında küçültülür; en fazla 900 KB olarak gönderilir. Kimlik, kart numarası, adres veya yüz gibi özel bilgileri gösteren fotoğraf yükleme.</div><img id="photoPreview" alt="Fotoğraf ön izlemesi" style="display:none;width:100%;max-height:220px;object-fit:contain;border-radius:12px;background:#edf4f4"></div>
+      <div class="formrow full"><label for="description">Açıklama</label><textarea class="field" id="description" required minlength="10" maxlength="800" placeholder="Eşyanın genel özelliklerini ve yaklaşık tarihini yaz. Kimlik veya kart numarası gibi hassas bilgileri ekleme."></textarea><div class="help">Güvenlik için eşyanın sahibini doğrulayacak tüm ayırt edici ayrıntıları herkese açık yazma.</div></div>
+    </div><div class="form-actions"><button type="button" class="btn secondary" id="cancelModal">Vazgeç</button><button type="submit" class="btn primary" id="submitBtn">İlanı yayınla</button></div></form>
+  </div>
+</div>
+<div class="modal-backdrop" id="accountBackdrop" role="dialog" aria-modal="true"><div class="modal"><div class="modal-head"><h3>Hesap işlemleri</h3><button class="close" id="closeAccount">×</button></div><form id="accountForm"><div class="formgrid"><div class="formrow full"><label for="accountUsername">Kullanıcı adı</label><input class="field" id="accountUsername" required minlength="3" maxlength="24" autocomplete="username"></div><div class="formrow full"><label for="accountPassword">Şifre (en az 8 karakter)</label><input class="field" id="accountPassword" type="password" required minlength="8" autocomplete="current-password"></div></div><div class="form-actions"><button type="button" class="btn secondary" id="switchAccount">Kayıt moduna geç</button><button type="submit" class="btn primary" id="accountSubmit">Giriş yap</button></div><p class="help">Şifre sunucuda güçlü bir türetme yöntemiyle saklanır; yine de bu ilk prototipi henüz herkese açık internete açma.</p></form></div></div>
+<div class="modal-backdrop" id="genericBackdrop" role="dialog" aria-modal="true"><div class="modal"><div class="modal-head"><h3 id="genericTitle">Bilgi</h3><button class="close" id="closeGeneric">×</button></div><div id="genericContent"></div></div></div>
+<div class="toast" id="toast" role="status"></div>
+<script>
+const CITIES=["Adana","Adıyaman","Afyonkarahisar","Ağrı","Aksaray","Amasya","Ankara","Antalya","Ardahan","Artvin","Aydın","Balıkesir","Bartın","Batman","Bayburt","Bilecik","Bingöl","Bitlis","Bolu","Burdur","Bursa","Çanakkale","Çankırı","Çorum","Denizli","Diyarbakır","Düzce","Edirne","Elazığ","Erzincan","Erzurum","Eskişehir","Gaziantep","Giresun","Gümüşhane","Hakkâri","Hatay","Iğdır","Isparta","İstanbul","İzmir","Kahramanmaraş","Karabük","Karaman","Kars","Kastamonu","Kayseri","Kırıkkale","Kırklareli","Kırşehir","Kilis","Kocaeli","Konya","Kütahya","Malatya","Manisa","Mardin","Mersin","Muğla","Muş","Nevşehir","Niğde","Ordu","Osmaniye","Rize","Sakarya","Samsun","Siirt","Sinop","Sivas","Şanlıurfa","Şırnak","Tekirdağ","Tokat","Trabzon","Tunceli","Uşak","Van","Yalova","Yozgat","Zonguldak"];
+const $=id=>document.getElementById(id);
+let activeType="";
+function escapeHtml(s=""){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function fillCities(){const options=CITIES.map(c=>`<option value="${c}">${c}</option>`).join("");$("city").insertAdjacentHTML("beforeend",options);$("formCity").innerHTML='<option value="">Şehir seç</option>'+options;}
+fillCities();
+function showToast(msg){$("toast").textContent=msg;$("toast").classList.add("show");setTimeout(()=>$("toast").classList.remove("show"),3000);}
+function dateLabel(iso){try{return new Intl.DateTimeFormat("tr-TR",{day:"numeric",month:"short",year:"numeric"}).format(new Date(iso));}catch{return "";}}
+const icons={"Telefon":"📱","Cüzdan / Kartlık":"👛","Anahtar":"🔑","Çanta":"🎒","Evcil hayvan":"🐾","Takı":"💍","Belge":"📄","Giyim":"🧥","Diğer":"📦"};
+async function loadListings(){
+ const p=new URLSearchParams();if(activeType)p.set("type",activeType);if($("city").value)p.set("city",$("city").value);if($("category").value)p.set("category",$("category").value);if($("query").value.trim())p.set("q",$("query").value.trim());
+ try{const r=await fetch("/api/listings?"+p.toString());const data=await r.json();if(!r.ok)throw new Error(data.error||"İlanlar yüklenemedi.");renderListings(data.listings||[]);}
+ catch(e){$("listings").innerHTML='<div class="empty">Sunucuya ulaşılamadı. Termux sunucusunun çalıştığını kontrol et.</div>';}
+}
+function renderListings(items){
+ if(!items.length){$("listings").innerHTML='<div class="empty"><div style="font-size:32px">🔎</div><strong>Henüz eşleşen ilan yok</strong><p>İlk ilanı sen oluşturabilir veya filtreleri değiştirebilirsin.</p></div>';return;}
+ $("listings").innerHTML=items.map(x=>`<article class="listing"><div class="listing-top"><span class="typebadge ${x.type==="lost"?"lost":"found"}">${x.type==="lost"?"KAYIP İLANI":"BULUNAN EŞYA"}</span><span style="font-size:11px;color:#7b8d94">${escapeHtml(dateLabel(x.createdAt))}</span></div><div class="category-icon">${icons[x.category]||"📦"}</div>${x.image?`<img class="listing-photo" src="${x.image}" alt="İlan fotoğrafı" loading="lazy">`:""}<h4>${escapeHtml(x.title)}</h4><div class="desc">${escapeHtml(x.description)}</div><div class="meta"><span>📍 ${escapeHtml(x.city)}${x.district?" · "+escapeHtml(x.district):""}</span><span>· ${escapeHtml(x.category)}</span></div><div class="listing-foot"><span>İlan kodu: ${escapeHtml(x.id.slice(0,8))}</span><span><button class="report" data-contact="${escapeHtml(x.id)}">Mesaj gönder</button> <button class="report" data-report="${escapeHtml(x.id)}">Bildir</button></span></div></article>`).join("");
+ document.querySelectorAll("[data-report]").forEach(btn=>btn.addEventListener("click",()=>reportListing(btn.dataset.report)));
+ document.querySelectorAll("[data-contact]").forEach(btn=>btn.addEventListener("click",()=>sendContact(btn.dataset.contact)));
+}
+async function reportListing(id){if(!confirm("Bu ilanı uygunsuz veya şüpheli olarak bildirmek istiyor musun?"))return;try{const r=await fetch(`/api/listings/${encodeURIComponent(id)}/report`,{method:"POST"});const d=await r.json();if(!r.ok)throw new Error(d.error);showToast("Bildirimin alındı.");loadListings();}catch(e){showToast("Bildirim gönderilemedi.");}}
+let selectedImage = "";
+function openModal(type){$("type").value=type||"lost";$("modalTitle").textContent=type==="found"?"Bulunan eşya ilanı":"Kayıp eşya ilanı";$("modalBackdrop").classList.add("show");}
+$("photo").addEventListener("change", async () => {
+ const file = $("photo").files && $("photo").files[0];
+ selectedImage = "";
+ $("photoPreview").style.display = "none";
+ if (!file) return;
+ if (!["image/jpeg","image/png","image/webp"].includes(file.type)) { showToast("Lütfen JPG, PNG veya WebP fotoğraf seç."); $("photo").value=""; return; }
+ try {
+   const bitmap = await createImageBitmap(file);
+   const scale = Math.min(1, 1000 / Math.max(bitmap.width, bitmap.height));
+   const canvas = document.createElement("canvas");
+   canvas.width = Math.max(1, Math.round(bitmap.width * scale));
+   canvas.height = Math.max(1, Math.round(bitmap.height * scale));
+   canvas.getContext("2d").drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+   bitmap.close();
+   let quality = 0.82;
+   let data = canvas.toDataURL("image/jpeg", quality);
+   while (data.length > 850000 && quality > 0.35) { quality -= 0.1; data = canvas.toDataURL("image/jpeg", quality); }
+   if (data.length > 900000) throw new Error("Fotoğraf çok büyük. Daha küçük bir fotoğraf seç.");
+   selectedImage = data;
+   $("photoPreview").src = data;
+   $("photoPreview").style.display = "block";
+ } catch(err) { showToast(err.message || "Fotoğraf okunamadı."); $("photo").value=""; selectedImage=""; }
+});
+function closeModal(){$("modalBackdrop").classList.remove("show");}
+$("openLost").onclick=()=>openModal("lost");$("openFound").onclick=()=>openModal("found");$("openAny").onclick=()=>openModal("lost");$("closeModal").onclick=closeModal;$("cancelModal").onclick=closeModal;$("modalBackdrop").addEventListener("click",e=>{if(e.target===$("modalBackdrop"))closeModal();});
+document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");activeType=b.dataset.type;loadListings();});
+["query","city","category"].forEach(id=>$(id).addEventListener(id==="query"?"input":"change",loadListings));
+$("clearFilters").onclick=()=>{$("query").value="";$("city").value="";$("category").value="";activeType="";document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x.dataset.type===""));loadListings();};
+$("listingForm").addEventListener("submit",async e=>{
+ e.preventDefault();const btn=$("submitBtn");btn.disabled=true;btn.textContent="Kaydediliyor…";
+ const payload={type:$("type").value,category:$("cat").value,title:$("title").value.trim(),city:$("formCity").value,district:$("district").value.trim(),description:$("description").value.trim(),image:selectedImage};
+ try{const r=await fetch("/api/listings",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});const d=await r.json();if(!r.ok)throw new Error(d.error||"İlan kaydedilemedi.");closeModal();$("listingForm").reset();selectedImage="";$("photoPreview").src="";$("photoPreview").style.display="none";showToast("İlan yayınlandı. Bilgileri tekrar kontrol et.");loadListings();}
+ catch(err){showToast(err.message||"İlan kaydedilemedi.");}
+ finally{btn.disabled=false;btn.textContent="İlanı yayınla";}
+});
+
+let me = null, accountMode = "login";
+async function refreshMe(){
+ try{const r=await fetch("/api/me");const d=await r.json();me=d.user;updateAccountUi();}catch{}
+}
+function updateAccountUi(){
+ $("accountStatus").textContent=me?`Merhaba, ${me.username} · hesabın açık`:"İlan vermek ve mesaj göndermek için giriş yap.";
+ $("accountBtn").textContent=me?"Hesap: "+me.username:"Giriş / Kayıt";
+ $("logoutBtn").style.display=me?"inline-block":"none";
+}
+function accountOpen(mode="login"){accountMode=mode;$("accountBackdrop").classList.add("show");$("accountSubmit").textContent=mode==="login"?"Giriş yap":"Hesap oluştur";$("switchAccount").textContent=mode==="login"?"Kayıt moduna geç":"Giriş moduna geç";}
+$("accountBtn").onclick=()=>accountOpen("login");
+$("closeAccount").onclick=()=>$("accountBackdrop").classList.remove("show");
+$("switchAccount").onclick=()=>accountOpen(accountMode==="login"?"register":"login");
+$("accountForm").addEventListener("submit",async e=>{
+ e.preventDefault();const payload={username:$("accountUsername").value.trim(),password:$("accountPassword").value};
+ try{const r=await fetch(accountMode==="login"?"/api/login":"/api/register",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});const d=await r.json();if(!r.ok)throw new Error(d.error||"Hesap işlemi başarısız.");me=d.user;updateAccountUi();$("accountBackdrop").classList.remove("show");$("accountForm").reset();showToast("Giriş başarılı.");}
+ catch(err){showToast(err.message);}
+});
+$("logoutBtn").onclick=async()=>{await fetch("/api/logout",{method:"POST"});me=null;updateAccountUi();showToast("Çıkış yapıldı.");};
+function showPanel(title,html){$("genericTitle").textContent=title;$("genericContent").innerHTML=html;$("genericBackdrop").classList.add("show");}
+$("closeGeneric").onclick=()=>$("genericBackdrop").classList.remove("show");
+$("myListingsBtn").onclick=async()=>{if(!me){accountOpen("login");return;}try{const r=await fetch("/api/my-listings"),d=await r.json();if(!r.ok)throw new Error(d.error);showPanel("İlanlarım",d.listings.length?d.listings.map(x=>`<div style="border:1px solid #e0e9eb;border-radius:12px;padding:12px;margin-bottom:9px"><b>${escapeHtml(x.title)}</b><p style="margin:6px 0;color:#607680">${escapeHtml(x.city)} · ${x.hidden?"Kaldırıldı":"Yayında"}</p>${x.hidden?"":`<button class="btn secondary" data-remove="${escapeHtml(x.id)}">İlanı kaldır</button>`}</div>`).join(""):"Henüz hesabına ait ilan yok.");document.querySelectorAll("[data-remove]").forEach(b=>b.onclick=async()=>{const r=await fetch("/api/listings/"+encodeURIComponent(b.dataset.remove),{method:"DELETE"});const d=await r.json();if(!r.ok){showToast(d.error);return;}showToast("İlan kaldırıldı.");loadListings();$("myListingsBtn").click();});}catch(e){showToast(e.message);}};
+$("messagesBtn").onclick=async()=>{if(!me){accountOpen("login");return;}try{const r=await fetch("/api/messages"),d=await r.json();if(!r.ok)throw new Error(d.error);showPanel("Gelen kutusu",d.messages.length?d.messages.map(m=>`<div style="border:1px solid #e0e9eb;border-radius:12px;padding:12px;margin-bottom:9px"><b>${m.mine?"Gönderdiğin mesaj":"Gönderen: "+escapeHtml(m.from)}</b><p>${escapeHtml(m.text)}</p><small style="color:#607680">${escapeHtml(dateLabel(m.createdAt))}</small></div>`).join(""):"Henüz mesaj yok.");}catch(e){showToast(e.message);}};
+async function sendContact(id){
+ if(!me){accountOpen("login");showToast("Mesaj göndermek için giriş yap.");return;}
+ const item=(await (await fetch("/api/listings")).json()).listings.find(x=>x.id===id);
+ if(!item){showToast("İlan bulunamadı.");return;}
+ if(item.ownerId===me.id){showToast("Kendi ilanına mesaj gönderemezsin.");return;}
+ const text=prompt("İlan sahibine mesajını yaz. Telefon, adres veya hassas kişisel bilgi paylaşma:");
+ if(!text||!text.trim())return;
+ try{const r=await fetch("/api/messages",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({listingId:id,text:text.trim()})});const d=await r.json();if(!r.ok)throw new Error(d.error);showToast(d.message||"Mesaj gönderildi.");}catch(e){showToast(e.message);}
+}
+$("matchesBtn").onclick=async()=>{
+ if(!me){accountOpen("login");showToast("Eşleşmeleri görmek için giriş yap.");return;}
+ try{
+  const r=await fetch("/api/matches"),d=await r.json();if(!r.ok)throw new Error(d.error);
+  showPanel("Akıllı eşleşmeler",d.matches.length?d.matches.map(m=>`<div style="border:1px solid #d7e8e6;border-radius:13px;padding:13px;margin-bottom:10px"><b>🎯 ${escapeHtml(m.mine.title)} ↔ ${escapeHtml(m.other.title)}</b><p style="margin:7px 0;color:#607680">${escapeHtml(m.other.city)} · ${escapeHtml(m.other.category)} · Yakınlık puanı: %${m.score}</p><p style="margin:0 0 8px">${escapeHtml(m.other.description||"")}</p><button class="btn secondary" data-match-contact="${escapeHtml(m.other.id)}">İlan sahibine mesaj</button></div>`).join(""):"Şimdilik eşleşme yok. Aynı şehir ve kategoride, biri kayıp diğeri bulunan ilan olduğunda burada görünür.");
+  document.querySelectorAll("[data-match-contact]").forEach(b=>b.onclick=()=>sendContact(b.dataset.matchContact));
+ }catch(e){showToast(e.message);}
+};
+async function openAdminPanel(){
+ try{
+  const r=await fetch("/api/admin/listings"),d=await r.json();if(!r.ok)throw new Error(d.error);
+  const items=d.listings||[];
+  showPanel("Yönetici paneli",`<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px"><b>Toplam ilan: ${items.length}</b><span>· Şikâyetli: ${items.filter(x=>(x.reports||0)>0).length}</span><span>· Gizli: ${items.filter(x=>x.hidden).length}</span></div>`+(items.length?items.slice().sort((a,b)=>(b.reports||0)-(a.reports||0)).map(x=>`<div style="border:1px solid #e0e9eb;border-radius:12px;padding:12px;margin-bottom:9px"><b>${escapeHtml(x.title||"İsimsiz ilan")}</b><p style="margin:6px 0;color:#607680">${escapeHtml(x.city||"")} · ${escapeHtml(x.category||"")} · ${x.type==="lost"?"Kayıp":"Bulunan"} · Şikâyet: ${x.reports||0} · ${x.hidden?"Gizli":"Yayında"}</p><p style="margin:0 0 8px">${escapeHtml(x.description||"")}</p>${x.hidden?"":`<button class="btn secondary" data-admin-hide="${escapeHtml(x.id)}">İlanı gizle</button>`}</div>`).join(""):"Henüz ilan yok."));
+  document.querySelectorAll("[data-admin-hide]").forEach(b=>b.onclick=async()=>{if(!confirm("Bu ilanı gizlemek istiyor musun?"))return;try{const rr=await fetch("/api/admin/hide",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({id:b.dataset.adminHide})});const dd=await rr.json();if(!rr.ok)throw new Error(dd.error);showToast("İlan gizlendi.");loadListings();openAdminPanel();}catch(e){showToast(e.message);}});
+ }catch(e){showToast(e.message);}
+}
+$("adminBtn").onclick=async()=>{
+ if(!me){accountOpen("login");showToast("Önce hesap oluşturup giriş yap.");return;}
+ if(me.role==="admin"){openAdminPanel();return;}
+ const key=prompt("Yönetici anahtarı (sunucu ADMIN_KEY ayarı):");if(!key)return;
+ try{const r=await fetch("/api/admin/promote",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({adminKey:key})});const d=await r.json();if(!r.ok)throw new Error(d.error);showToast(d.message);await fetch("/api/logout",{method:"POST"});me=null;updateAccountUi();return;}catch(e){showToast(e.message);}
+};
+$("listingForm").addEventListener("submit", async e=>{ /* auth handled by server response */ });
+const originalSubmitHandlerNote = "Form submission is validated by the server.";
+refreshMe();
+loadListings();
+</script>
+</body>
+</html>
